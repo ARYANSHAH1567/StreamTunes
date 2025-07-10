@@ -43,7 +43,7 @@ export default function Dashboard() {
   const params = useParams()
   const router = useRouter()
   const { data: session, status } = useSession()
-  const streamCode = params.streamCode as string
+  const streamCode = params?.streamCode as string
 
   const [user, setUser] = useState<User | null>(null)
   const [streamSession, setStreamSession] = useState<StreamSession | null>(null)
