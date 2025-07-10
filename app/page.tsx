@@ -45,6 +45,7 @@ export default function Component() {
       router.push(`/${streamCode}/stream`);
     } else {
       //redirect to join page
+      router.push("/join");
     }
   }
 
@@ -257,33 +258,6 @@ export default function Component() {
                 </div>
                 <h3 className="text-xl font-bold text-white">Music Plays</h3>
                 <p className="text-slate-400">Most voted tracks play automatically.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-r from-blue-900 to-slate-900">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-6 text-center text-white">
-              <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">Ready to Transform Your Stream?</h2>
-                <p className="mx-auto max-w-[600px] text-slate-300 md:text-lg">
-                  Join creators building stronger communities through interactive music - completely free.
-                </p>
-              </div>
-              <div className="w-full max-w-sm space-y-2">
-                <form className="flex gap-2">
-                  <Input
-                    type="email"
-                    placeholder="Enter your email"
-                    className="max-w-lg flex-1 bg-slate-800 border-slate-700 text-white placeholder:text-slate-400"
-                  />
-                  <Button type="submit" className="bg-blue-600 hover:bg-blue-700">
-                    Start Free
-                  </Button>
-                </form>
-                <p className="text-xs text-slate-400">Completely free. No credit card required.</p>
               </div>
             </div>
           </div>

@@ -8,8 +8,8 @@ export function Redirect() {
     const session = useSession();
     const router = useRouter();
     useEffect(()=>{
-        if(session?.data?.user) {
-            router.push("/dashboard");
+        if(!session?.data?.user) {
+            router.push("/signin");
         }
     },[session]);
     return null;

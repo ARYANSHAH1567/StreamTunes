@@ -30,9 +30,9 @@ model StreamSession {
 
 model Stream {
   id          String         @id @default(uuid())
-  sessionId   String?        // <- make it optional for now
-  session     StreamSession? @relation(fields: [sessionId], references: [id])
-  extractedId String         @unique @default("")
+  sessionId   String         // Remove optional - every stream needs a session
+  session     StreamSession  @relation(fields: [sessionId], references: [id])
+  extractedId String         @default("")        // Remove @unique - multiple sessions can have same video
   type        StreamType
   url         String
   title       String         @default("")
@@ -40,8 +40,12 @@ model Stream {
   bigImg      String         @default("")
   active      Boolean        @default(true)
   upvotes     Upvote[]
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+  
+  // Add compound unique constraint instead
+  @@unique([sessionId, extractedId])
 }
-
 
 model Upvote {
   id        String   @id @default(uuid())
@@ -49,7 +53,8 @@ model Upvote {
   streamId  String
   user      User     @relation(fields: [userId], references: [id])
   stream    Stream   @relation(fields: [streamId], references: [id])
-
+  isUpvote  Boolean  @default(true)  // Add this to track upvote/downvote
+  
   @@unique([userId, streamId]) // one vote per user per song
 }
 
